@@ -1,4 +1,4 @@
-// rgbToHex(255, 0, 0) => 'ff0000'
+// rgbToHex(255, 0, 0) => '#ff0000'
 
 const rgbToHex = (r, g, b) => {
   const isOutOfRange = (num) => {
