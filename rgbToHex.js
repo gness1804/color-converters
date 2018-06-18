@@ -1,6 +1,10 @@
 // rgbToHex(255, 0, 0) => '#ff0000'
 
 const rgbToHex = (r, g, b) => {
+  r = r.replace(',', '');
+  g = g.replace(',', '');
+  b = b.replace(',', '');
+
   const isOutOfRange = (num) => {
     if (num < 0 || num > 255) {
       return true;
