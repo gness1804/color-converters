@@ -22,11 +22,23 @@ const { debug } = flags;
     );
   }
 
+  r = parseFloat(r);
+  g = parseFloat(g);
+  b = parseFloat(b);
+
   debug && log(flags);
 
-  r = parseInt(r.replace(',', ''), 10);
-  g = parseInt(g.replace(',', ''), 10);
-  b = parseInt(b.replace(',', ''), 10);
+  if (isNaN(r) || isNaN(g) || isNaN(b)) {
+    throw new Error(
+      'Error: invalid input. You need 3 arguments, each of them 0-255.',
+    );
+  }
+
+  if (!Number.isInteger(r) || !Number.isInteger(g) || !Number.isInteger(b)) {
+    throw new Error(
+      'Error: invalid input. You need 3 arguments, each of them 0-255.',
+    );
+  }
 
   const isOutOfRange = (num) => {
     if (num < 0 || num > 255) {
@@ -34,12 +46,6 @@ const { debug } = flags;
     }
     return false;
   };
-
-  if (isNaN(r) || isNaN(g) || isNaN(b)) {
-    throw new Error(
-      'Error: invalid input. You need 3 arguments, each of them 0-255.',
-    );
-  }
 
   if (isOutOfRange(r) || isOutOfRange(g) || isOutOfRange(b)) {
     throw new Error(
