@@ -58,7 +58,7 @@ const options = {
 const cli = meow(helpText, options);
 
 const { flags: cliFlags, input, showHelp } = cli;
-const { debug } = flags;
+const { debug } = cliFlags;
 
 (async () => {
   if (input.includes('help')) showHelp(0);
@@ -71,7 +71,6 @@ const { debug } = flags;
     );
   }
 
-  // TODO: fix
   debug && log(cliFlags);
 
   r = parseInt(r.replace(',', ''), 10);
