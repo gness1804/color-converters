@@ -7,5 +7,26 @@
   },
   "repository": "https://github.com/gness1804/color-converters.git",
   "author": "Graham Nessler <grahamnessler@insiderx.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . && prettier --check \"./**/*.{js,json}\"",
+    "fix": "eslint --fix . && prettier --write \"./**/*.{js,json}\"",
+    "start:to-hex": "node rgbToHex.js",
+    "start:to-rgb": "node hexToRgb.js"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "prettier": "^2.3.2"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "auto-changelog": "^2.3.0",
+    "cli-alerts": "^1.2.2",
+    "cli-meow-help": "^2.0.2",
+    "meow": "^9.0.0",
+    "pre-commit": "^1.2.2",
+    "update-notifier": "^5.1.0"
+  }
 }
