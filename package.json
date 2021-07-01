@@ -12,7 +12,11 @@
     "lint": "eslint . && prettier --check \"./**/*.{js,json}\"",
     "fix": "eslint --fix . && prettier --write \"./**/*.{js,json}\"",
     "start:rgb": "node rgbToHex.js",
-    "start:hex": "node hexToRgb.js"
+    "start:hex": "node hexToRgb.js",
+    "changelog": "auto-changelog -p -l 8 && git add CHANGELOG.md",
+    "tag:patch": "npm version patch && npm run changelog",
+    "tag:minor": "npm version minor && npm run changelog",
+    "tag:major": "npm version major && npm run changelog"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
