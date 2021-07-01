@@ -5,11 +5,10 @@ const log = require('./utils/log');
 const cli = require('./utils/hextorgb/cli');
 const updateNotifier = require('update-notifier');
 const pkg = require('./package.json');
+const validate = require('./utils/hextorgb/validate');
 
 const { flags, input, showHelp } = cli;
 const { debug } = flags;
-
-const validate = (val) => val.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
 
 (async () => {
   updateNotifier({ pkg }).notify();
@@ -18,13 +17,9 @@ const validate = (val) => val.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
 
   let { hex } = flags;
 
-  if (!hex || typeof hex !== 'string' || !validate(hex)) {
-    throw new Error(
-      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
-    );
-  }
-
   debug && log(flags);
+
+  hex = validate(hex);
 
   const res = {
     r: 0,

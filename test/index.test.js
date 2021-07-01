@@ -84,15 +84,6 @@ test('hexToRgb -- fails if no arguments are passed', async (t) => {
   );
 });
 
-test('hexToRgb -- fails if non-string argument is passed', async (t) => {
-  const { stderr } = await execa.command(`node ${hexToRgb} -h true`);
-  t.true(
-    stderr.includes(
-      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
-    ),
-  );
-});
-
 test('hexToRgb -- fails if invalid hex value passed (bad char)', async (t) => {
   const { stderr } = await execa.command(`node ${hexToRgb} -h "#ff000g"`);
   t.true(
@@ -116,8 +107,8 @@ test('hexToRgb -- passes if valid hex value passed and outputs correct RGB value
   t.true(stdout.includes('Your RGB value is 255 0 0'));
 });
 
-test('hexToRgb -- passes if valid hex value passed and outputs correct RGB value (2)', async (t) => {
-  const { stdout } = await execa.command(`node ${hexToRgb} -h "#f21680"`);
+test('hexToRgb -- passes if valid hex value passed and outputs correct RGB value (2) (hash missing but should still pass)', async (t) => {
+  const { stdout } = await execa.command(`node ${hexToRgb} -h "f21680"`);
   t.true(stdout.includes('Your RGB value is 242 22 128'));
 });
 
