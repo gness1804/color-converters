@@ -65,3 +65,56 @@ test('rgbToHex -- passes if valid RGB values are passed and output the correct h
   const { stdout } = await execa.command(`node ${rgbToHex} -r 19 -g 48 -b 135`);
   t.true(stdout.includes('Your hex value is #133087'));
 });
+
+const hexToRgb = path.join(__dirname, '../hexToRgb.js');
+
+test('hexToRgb -- fails if no arguments are passed', async (t) => {
+  const { stderr } = await execa.command(`node ${hexToRgb}`);
+  t.true(
+    stderr.includes(
+      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
+    ),
+  );
+});
+
+test('hexToRgb -- fails if non-string argument is passed', async (t) => {
+  const { stderr } = await execa.command(`node ${hexToRgb} -h true`);
+  t.true(
+    stderr.includes(
+      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
+    ),
+  );
+});
+
+test('hexToRgb -- fails if invalid hex value passed (bad char)', async (t) => {
+  const { stderr } = await execa.command(`node ${hexToRgb} -h "#ff000g"`);
+  t.true(
+    stderr.includes(
+      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
+    ),
+  );
+});
+
+test('hexToRgb -- fails if invalid hex value passed (neither 3 nor 6 characters)', async (t) => {
+  const { stderr } = await execa.command(`node ${hexToRgb} -h "#ff000"`);
+  t.true(
+    stderr.includes(
+      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
+    ),
+  );
+});
+
+test('hexToRgb -- passes if valid hex value passed and outputs correct RGB value (1)', async (t) => {
+  const { stdout } = await execa.command(`node ${hexToRgb} -h "#ff0000"`);
+  t.true(stdout.includes('Your RGB value is 255 0 0'));
+});
+
+test('hexToRgb -- passes if valid hex value passed and outputs correct RGB value (2)', async (t) => {
+  const { stdout } = await execa.command(`node ${hexToRgb} -h "#f21680"`);
+  t.true(stdout.includes('Your RGB value is 242 22 128'));
+});
+
+test('hexToRgb -- passes if valid hex value passed and outputs correct RGB value (3)', async (t) => {
+  const { stdout } = await execa.command(`node ${hexToRgb} -h "#09b523"`);
+  t.true(stdout.includes('Your RGB value is 9 181 35'));
+});
