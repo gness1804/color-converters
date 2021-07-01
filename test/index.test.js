@@ -50,3 +50,18 @@ test('rgbToHex -- fails if one or more arguments is not a number', async (t) => 
 });
 
 // TODO: add tests for non-integer number values
+
+test('rgbToHex -- passes if valid RGB values are passed and output the correct hexadecimal value (1)', async (t) => {
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 255 -g 0 -b 0`);
+  t.true(stdout.includes('Your hex value is #ff0000'));
+});
+
+test('rgbToHex -- passes if valid RGB values are passed and output the correct hexadecimal value (2)', async (t) => {
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 85 -g 227 -b 66`);
+  t.true(stdout.includes('Your hex value is #55e342'));
+});
+
+test('rgbToHex -- passes if valid RGB values are passed and output the correct hexadecimal value (3)', async (t) => {
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 19 -g 48 -b 135`);
+  t.true(stdout.includes('Your hex value is #133087'));
+});
