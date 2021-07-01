@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // hexToRgb('ff0000') => {r: 255, g: 0, b: 0}
 // hexToRgb('f00') => { r: 255, g: 0, b: 0 }
 // hexToRgb('#f00') => { r: 255, g: 0, b: 0 }

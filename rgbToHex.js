@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // rgbToHex(255, 0, 0) => '#ff0000'
 
 const rgbToHex = (r, g, b) => {

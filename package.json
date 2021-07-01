@@ -1,0 +1,11 @@
+{
+  "name": "color-converters",
+  "version": "1.0.0",
+  "bin": {
+    "rgb-to-hex": "rgbToHex.js",
+    "hex-to-rgb": "hexToRgb.js"
+  },
+  "repository": "https://github.com/gness1804/color-converters.git",
+  "author": "Graham Nessler <grahamnessler@insiderx.com>",
+  "license": "MIT"
+}
