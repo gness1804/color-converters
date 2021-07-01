@@ -3,6 +3,8 @@
 const alert = require('cli-alerts');
 const log = require('./utils/log');
 const cli = require('./utils/hextorgb/cli');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
 const { flags, input, showHelp } = cli;
 const { debug } = flags;
@@ -10,6 +12,8 @@ const { debug } = flags;
 const validate = (val) => val.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
 
 (async () => {
+  updateNotifier({ pkg }).notify();
+
   if (input.includes('help')) showHelp(0);
 
   let { hex } = flags;

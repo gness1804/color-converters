@@ -3,11 +3,15 @@
 const alert = require('cli-alerts');
 const log = require('./utils/log');
 const cli = require('./utils/rgbtohex/cli');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
 const { flags, input, showHelp } = cli;
 const { debug } = flags;
 
 (async () => {
+  updateNotifier({ pkg }).notify();
+
   if (input.includes('help')) showHelp(0);
 
   let { red: r, green: g, blue: b } = flags;
