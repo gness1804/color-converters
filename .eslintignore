@@ -9,6 +9,7 @@ coverage
 .eslintrc.js
 # .babelrc
 package.json
+package-lock.json
 README.md
 # webpack.config.js
 .prettierrc.json

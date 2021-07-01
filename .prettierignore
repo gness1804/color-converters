@@ -5,6 +5,7 @@ node_modules
 .eslintrc.js
 # .babelrc
 package.json
+package-lock.json
 README.md
 # webpack.config.js
 .vscode/
