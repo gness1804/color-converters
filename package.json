@@ -11,8 +11,8 @@
   "scripts": {
     "lint": "eslint . && prettier --check \"./**/*.{js,json}\"",
     "fix": "eslint --fix . && prettier --write \"./**/*.{js,json}\"",
-    "start:to-hex": "node rgbToHex.js",
-    "start:to-rgb": "node hexToRgb.js"
+    "start:rgb": "node rgbToHex.js",
+    "start:hex": "node hexToRgb.js"
   },
   "devDependencies": {
     "eslint": "^7.29.0",

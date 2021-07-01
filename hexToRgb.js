@@ -1,37 +1,55 @@
 #!/usr/bin/env node
 
-// hexToRgb('ff0000') => {r: 255, g: 0, b: 0}
-// hexToRgb('f00') => { r: 255, g: 0, b: 0 }
-// hexToRgb('#f00') => { r: 255, g: 0, b: 0 }
+const alert = require('cli-alerts');
+const log = require('./utils/log');
+const cli = require('./utils/hextorgb/cli');
 
-const hexToRgb = (hex) => {
-  if (!hex || typeof hex !== 'string') {
-    throw new Error('Invalid hex value entered.');
+const { flags, input, showHelp } = cli;
+const { debug } = flags;
+
+const validate = (val) => val.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
+
+(async () => {
+  if (input.includes('help')) showHelp(0);
+
+  let { hex } = flags;
+
+  if (!hex || typeof hex !== 'string' || !validate(hex)) {
+    throw new Error(
+      'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
+    );
   }
-  const result = {
+
+  debug && log(flags);
+
+  const res = {
     r: 0,
     g: 0,
     b: 0,
   };
-  const newHex = hex.replace('#', '');
-  if (newHex.length === 3) {
-    const red = parseInt(`${newHex[0]}${newHex[0]}`, 16);
-    Object.assign(result, { r: red });
-    const green = parseInt(`${newHex[1]}${newHex[1]}`, 16);
-    Object.assign(result, { g: green });
-    const blue = parseInt(`${newHex[2]}${newHex[2]}`, 16);
-    Object.assign(result, { b: blue });
-  } else if (newHex.length === 6) {
-    const red = parseInt(`${newHex[0]}${newHex[1]}`, 16);
-    Object.assign(result, { r: red });
-    const green = parseInt(`${newHex[2]}${newHex[3]}`, 16);
-    Object.assign(result, { g: green });
-    const blue = parseInt(`${newHex[4]}${newHex[5]}`, 16);
-    Object.assign(result, { b: blue });
+
+  hex = hex.replace('#', '');
+  if (hex.length === 3) {
+    const red = parseInt(`${hex[0]}${hex[0]}`, 16);
+    Object.assign(res, { r: red });
+    const green = parseInt(`${hex[1]}${hex[1]}`, 16);
+    Object.assign(res, { g: green });
+    const blue = parseInt(`${hex[2]}${hex[2]}`, 16);
+    Object.assign(res, { b: blue });
+  } else if (hex.length === 6) {
+    const red = parseInt(`${hex[0]}${hex[1]}`, 16);
+    Object.assign(res, { r: red });
+    const green = parseInt(`${hex[2]}${hex[3]}`, 16);
+    Object.assign(res, { g: green });
+    const blue = parseInt(`${hex[4]}${hex[5]}`, 16);
+    Object.assign(res, { b: blue });
   } else {
     throw new Error('Invalid hex value entered.');
   }
-  return result;
-};
 
-console.log(hexToRgb(process.argv[2]));
+  alert({
+    type: 'success',
+    name: 'Success!',
+    msg: `Your RGB value is ${res.r} ${res.g} ${res.b}`,
+  });
+})();
