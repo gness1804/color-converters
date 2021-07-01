@@ -5,6 +5,7 @@
     "rgb-to-hex": "rgbToHex.js",
     "hex-to-rgb": "hexToRgb.js"
   },
+  "main": "index.js",
   "description": "A utility that provides simple color conversions from RGB to Hex and vice-versa.",
   "repository": "https://github.com/gness1804/color-converters.git",
   "author": "Graham Nessler <gness1804@gmail.com>",

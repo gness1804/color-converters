@@ -37,14 +37,12 @@ hex-to-rgb -h "#ffffff"
 # both output "Success!  Your RGB value is 255 255 255"
 ```
 
+### In a Node project
+You can also require these two scripts in a JS file.
+
 ```js
 import color-converters from 'color-converters';
 // more js code to explain how to use the package.
-```
-
-### [Some Usage Subcategory, such as Handling Errors]
-```js
-// optional. Can help explain various ways of using the package. Use none or as many as you need.
 ```
 
 #### BASIC USAGE
