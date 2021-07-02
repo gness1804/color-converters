@@ -2,6 +2,8 @@
 
 > A utility that provides simple color conversions from RGB to Hex and vice-versa. Can be used to quickly convert one to the other on the command line.
 
+<br />
+
 ## Install
 
 ```
@@ -9,6 +11,8 @@ npm install -g color-converters OR yarn global add color-converters
 OR
 npx color-converters
 ```
+
+<br />
 
 ## Usage
 The `color-converters` package will give you access to two binaries: `rgb-to-hex` and `hex-to-rgb`. The names are pretty self-explanatory. The package is meant as a global module, used as follows:
@@ -20,6 +24,8 @@ rgb-to-hex <command> [option]
 ```shell
 hex-to-rgb <command> [option]
 ```
+
+<br />
 
 For conversions, you might do something like this:
 
@@ -36,6 +42,8 @@ hex-to-rgb -h "#fff"
 hex-to-rgb -h "#ffffff"
 # both output "Success!  Your RGB value is 255 255 255"
 ```
+
+<br />
 
 ## All Commands and Options
 
@@ -70,6 +78,8 @@ hex-to-rgb -h "#ffffff"
 -v, --version  Print CLI version. Default: false
 -h, --hex      The hex value (3 or 6 characters) Default: false
 ```
+
+<br />
 
 ## Changelog
 
