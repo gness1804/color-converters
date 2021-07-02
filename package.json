@@ -1,6 +1,6 @@
 {
   "name": "@gness1804/color-converters",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "bin": {
     "rgb-to-hex": "rgbToHex.js",
     "hex-to-rgb": "hexToRgb.js"
