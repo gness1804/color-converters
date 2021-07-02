@@ -11,7 +11,7 @@ npx color-converters
 ```
 
 ## Usage
-The `color-converters` package will give you access to two binaries: `rgb-to-hex` and `hex-to-rgb`. The names are pretty self-explanatory. The package is meant chiefly as a global module, used as follows:
+The `color-converters` package will give you access to two binaries: `rgb-to-hex` and `hex-to-rgb`. The names are pretty self-explanatory. The package is meant as a global module, used as follows:
 
 ```shell
 rgb-to-hex <command> [option]
@@ -21,7 +21,7 @@ rgb-to-hex <command> [option]
 hex-to-rgb <command> [option]
 ```
 
-For simple conversions, you might do something like this:
+For conversions, you might do something like this:
 
 ```shell
 rgb-to-hex -r <red value> -g <green value> -b <blue value>
@@ -37,37 +37,40 @@ hex-to-rgb -h "#ffffff"
 # both output "Success!  Your RGB value is 255 255 255"
 ```
 
-```js
-import color-converters from 'color-converters';
-// more js code to explain how to use the package.
-```
+## All Commands and Options
 
-### [Some Usage Subcategory, such as Handling Errors]
-```js
-// optional. Can help explain various ways of using the package. Use none or as many as you need.
-```
-
-#### BASIC USAGE
-
-```sh
-color-converters <command> [option]
-```
+### For `rgb-to-hex`:
 
 #### COMMANDS
 
 ```sh
-help  Print help info
-# other commands as needed. You may want to run `yarn start help` or `npm start help` and copy and paste the output.
+  help  Print out help info.
 ```
 
 #### OPTIONS
+```sh
+-d, --debug    Print debug info. Default: false
+-v, --version  Print CLI version. Default: false
+-r, --red      The value for red. 0 to 255. Default: false
+-g, --green    The value for green. 0 to 255. Default: false
+-b, --blue     The value for blue. 0 to 255. Default: false
+```
+
+### For `hex-to-rgb`:
+
+#### COMMANDS
 
 ```sh
--d, --debug    Print debug info Default: false
--v, --version  Print CLI version Default: false
-# other flags as needed. You may want to run `yarn start help` or `npm start help` and copy and paste the output.
+  help  Print out help info.
+```
+
+#### OPTIONS
+```sh
+ d, --debug    Print debug info. Default: false
+-v, --version  Print CLI version. Default: false
+-h, --hex      The hex value (3 or 6 characters) Default: false
 ```
 
 ## Changelog
 
-[❯ Read the changelog here →](changelog.md)
+[❯ Read the changelog here →](CHANGELOG.md)
