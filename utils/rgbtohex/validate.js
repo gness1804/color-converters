@@ -1,3 +1,5 @@
+const handleError = require('cli-handle-error');
+
 const validate = (r, g, b) => {
   const isOutOfRange = (num) => {
     if (num < 0 || num > 255) {
@@ -6,10 +8,10 @@ const validate = (r, g, b) => {
     return false;
   };
 
-  const msg = 'Error: invalid input. You need 3 arguments, each of them 0-255.';
+  let msg = 'Error: invalid input. You need 3 arguments, each of them 0-255.';
 
   if (!r || !g || !b) {
-    throw new Error(msg);
+    handleError(msg, {}, true, true);
   }
 
   r = parseFloat(r);
@@ -17,15 +19,19 @@ const validate = (r, g, b) => {
   b = parseFloat(b);
 
   if (isNaN(r) || isNaN(g) || isNaN(b)) {
-    throw new Error(msg);
+    msg +=
+      ' One or more arguments you passed in is not a number. Please try again.';
+    handleError(msg, {}, true, true);
   }
 
   if (!Number.isInteger(r) || !Number.isInteger(g) || !Number.isInteger(b)) {
-    throw new Error(msg);
+    msg +=
+      ' Each number passed in must be a positive integer. Please try again.';
+    handleError(msg, {}, true, true);
   }
 
   if (isOutOfRange(r) || isOutOfRange(g) || isOutOfRange(b)) {
-    throw new Error(msg);
+    handleError(msg, {}, true, true);
   }
 
   return { r, g, b };

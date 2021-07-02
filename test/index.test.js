@@ -5,55 +5,55 @@ const path = require('path');
 const rgbToHex = path.join(__dirname, '../rgbToHex.js');
 
 test('rgbToHex -- fails if no arguments are passed', async (t) => {
-  const { stderr } = await execa.command(`node ${rgbToHex}`);
+  const { stdout } = await execa.command(`node ${rgbToHex}`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Error: invalid input. You need 3 arguments, each of them 0-255.',
     ),
   );
 });
 
 test('rgbToHex -- fails if fewer than 3 valid arguments are passed', async (t) => {
-  const { stderr } = await execa.command(`node ${rgbToHex} -r 255 -g 0`);
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 255 -g 0`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Error: invalid input. You need 3 arguments, each of them 0-255.',
     ),
   );
 });
 
 test('rgbToHex -- fails if one or more arguments is out of range (lower than 0)', async (t) => {
-  const { stderr } = await execa.command(`node ${rgbToHex} -r 255 -g 0 -b -2`);
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 255 -g 0 -b -2`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Error: invalid input. You need 3 arguments, each of them 0-255.',
     ),
   );
 });
 
 test('rgbToHex -- fails if one or more arguments is out of range (greater than 255)', async (t) => {
-  const { stderr } = await execa.command(`node ${rgbToHex} -r 256 -g 0 -b 0`);
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 256 -g 0 -b 0`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Error: invalid input. You need 3 arguments, each of them 0-255.',
     ),
   );
 });
 
 test('rgbToHex -- fails if one or more arguments is not a number', async (t) => {
-  const { stderr } = await execa.command(`node ${rgbToHex} -r 256 -g 0 -b q`);
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 256 -g 0 -b q`);
   t.true(
-    stderr.includes(
-      'Error: invalid input. You need 3 arguments, each of them 0-255.',
+    stdout.includes(
+      'Error: invalid input. You need 3 arguments, each of them 0-255. One or more arguments you passed in is not a number. Please try again.',
     ),
   );
 });
 
 test('rgbToHex -- fails if one or more arguments is a non-integer number', async (t) => {
-  const { stderr } = await execa.command(`node ${rgbToHex} -r 255 -g 0 -b 2.5`);
+  const { stdout } = await execa.command(`node ${rgbToHex} -r 255 -g 0 -b 2.5`);
   t.true(
-    stderr.includes(
-      'Error: invalid input. You need 3 arguments, each of them 0-255.',
+    stdout.includes(
+      'Error: invalid input. You need 3 arguments, each of them 0-255. Each number passed in must be a positive integer. Please try again.',
     ),
   );
 });
@@ -76,27 +76,27 @@ test('rgbToHex -- passes if valid RGB values are passed and output the correct h
 const hexToRgb = path.join(__dirname, '../hexToRgb.js');
 
 test('hexToRgb -- fails if no arguments are passed', async (t) => {
-  const { stderr } = await execa.command(`node ${hexToRgb}`);
+  const { stdout } = await execa.command(`node ${hexToRgb}`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
     ),
   );
 });
 
 test('hexToRgb -- fails if invalid hex value passed (bad char)', async (t) => {
-  const { stderr } = await execa.command(`node ${hexToRgb} -h "#ff000g"`);
+  const { stdout } = await execa.command(`node ${hexToRgb} -h "#ff000g"`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
     ),
   );
 });
 
 test('hexToRgb -- fails if invalid hex value passed (neither 3 nor 6 characters)', async (t) => {
-  const { stderr } = await execa.command(`node ${hexToRgb} -h "#ff000"`);
+  const { stdout } = await execa.command(`node ${hexToRgb} -h "#ff000"`);
   t.true(
-    stderr.includes(
+    stdout.includes(
       'Invalid hex value entered. Please enter a 3 or 6 value hex string. Hash (#) optional.',
     ),
   );
