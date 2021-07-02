@@ -9,6 +9,12 @@
   "repository": "https://github.com/gness1804/color-converters.git",
   "author": "Graham Nessler <gness1804@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "rgb",
+    "hex",
+    "hexadecimal",
+    "color"
+  ],
   "scripts": {
     "lint": "eslint . && prettier --check \"./**/*.{js,json}\"",
     "fix": "eslint --fix . && prettier --write \"./**/*.{js,json}\"",
