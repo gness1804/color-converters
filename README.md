@@ -7,9 +7,9 @@
 ## Install
 
 ```
-npm install -g @gness1804/color-converters OR yarn global add @gness1804/color-converters
+npm install -g @gness1804/color-converters
 OR
-npx @gness1804/color-converters
+yarn global add @gness1804/color-converters
 ```
 
 <br />
