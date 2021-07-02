@@ -1,4 +1,4 @@
-# color-converters
+# @gness1804/color-converters
 
 > A utility that provides simple color conversions from RGB to Hex and vice-versa. Can be used to quickly convert one to the other on the command line.
 
@@ -7,9 +7,9 @@
 ## Install
 
 ```
-npm install -g color-converters OR yarn global add color-converters
+npm install -g @gness1804/color-converters OR yarn global add @gness1804/color-converters
 OR
-npx color-converters
+npx @gness1804/color-converters
 ```
 
 <br />

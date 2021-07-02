@@ -1,5 +1,5 @@
 {
-  "name": "color-converters",
+  "name": "@gness1804/color-converters",
   "version": "2.1.3",
   "bin": {
     "rgb-to-hex": "rgbToHex.js",
